@@ -10,7 +10,7 @@
 %       - tau:   current generation counter               |
 % --------------------------------------------------------|%
 % Any questions can be directed to                        |
-%     Dr. Zhanglu Hou at zhanglhou@163.com.               |
+%     Dr. Xiaozhong Yu at xzyu@smail.xtu.edu.cn.               |
 %                                                         |
 % ========================================================|%
 
