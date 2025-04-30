@@ -10,7 +10,7 @@
 %       - tau:   current generation counter               |
 % --------------------------------------------------------|%
 % Any questions can be directed to                        |
-%     Dr. Xiaozhong Yu at xzyu@smail.xtu.edu.cn.               |
+%     Dr. Xiaozhong Yu at xzyu@smail.xtu.edu.cn.          |
 %                                                         |
 % ========================================================|%
 
