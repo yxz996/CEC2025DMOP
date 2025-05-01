@@ -10,7 +10,7 @@
 %       - tau:   current generation counter               |
 % --------------------------------------------------------|%
 % Any questions can be directed to                        |
-%     Dr. Xiaozhong Yu at xzyu@smail.xtu.edu.cn.          |
+%     Dr. Xiaozhong Yu at xzyu@smail.xtu.edu.cn.               |
 %                                                         |
 % ========================================================|%
 
@@ -49,8 +49,8 @@ switch (probID)
         x=linspace(0,1,1500);   
         k=floor(5*abs(sin(pi*t)));       
         g=sum((4*y.^2-cos(2*k*pi*y)+1));
-        f1=(1+g)*(1-x+0.05*sin(6*pi*x1))*(x+0.05*sin(6*pi*x1).*sin(x+0.05*sin(6*pi*x)));
-        f2=(1+g)*(x1+0.05*sin(6*pi*x1)).*(x2+0.05*sin(6*pi*x2));
+        f1=(1+g)*(1-x+0.05*sin(6*pi*x))*(x+0.05*sin(6*pi*x).*sin(x+0.05*sin(6*pi*x)));
+        f2=(1+g)*(x+0.05*sin(6*pi*x)).*(x+0.05*sin(6*pi*x));
         [h]=get_PF({f1,f2}, false);
     case 'DP3'
         x=linspace(0,1,1500);
@@ -67,16 +67,20 @@ switch (probID)
     case 'DP4'
         x=linspace(0,1,1500);
         g=0;
-        f1=(1+g)*(x+0.1*sin(3*pi*x));
-        f2=(1+g)*(1-x+0.1*sin(3*pi*x));
+        f1=(1+g)*(1-x+0.05*sin(6*pi*x));
+        f2=(1+g)*(x+0.05*sin(6*pi*x));
         [h]=get_PF({f1,f2}, false);
     case 'DP5'
-        x=linspace(0,1,1500);
-        G=sin(0.5*pi*t);
-        a=0.2+2.8*abs(G);
+        x=linspace(0,1,1500); 
+        k=10*cos(2.5*pi*t);
+        a=0.5*abs(sin(pi*t));
         g=0;
-        f1=(1+g)*(x+0.1*sin(3*pi*x)).^a;
-        f2=(1+g)*(1-x+0.1*sin(3*pi*x)).^a;
+        f1=(1+g)*cos(0.5*pi*(x));
+        if x<a
+            f2=(1+g)*abs(k*cos(0.5*pi*x)-cos(0.5*pi*a))+sin(0.5*pi*a);
+        else
+            f2=(1+g)*sin(0.5*pi*x);
+        end
         [h]=get_PF({f1,f2}, false);
     %% inregular changes        
     case 'DP6'
@@ -112,7 +116,7 @@ switch (probID)
         p=floor(6*G);
         g=0;
         f1=(1+g)*(cos(0.5*pi*x))^2 + G;
-        f2=sum((sin(0.5*pi*x)).^2 +sin(0.5*pi*x).*(cos(p*pi*x)).^2)+ G;
+        f2=(sin(0.5*pi*x)).^2 +sin(0.5*pi*x).*(cos(p*pi*x)).^2+ G;
         [h]=get_PF({f1,f2}, true);
     otherwise
         disp('no such test problem.')
