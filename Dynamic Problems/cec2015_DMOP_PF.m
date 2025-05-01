@@ -46,9 +46,8 @@ switch (probID)
         f2=g*(1-x+0.1*sin(3*pi*x)).^a;
         [h]=get_PF({f1,f2}, false);
     case 'DP2'
-        x=linspace(0,1,1500);   
-        k=floor(5*abs(sin(pi*t)));       
-        g=sum((4*y.^2-cos(2*k*pi*y)+1));
+        x=linspace(0,1,1500);       
+        g=0;
         f1=(1+g)*(1-x+0.05*sin(6*pi*x))*(x+0.05*sin(6*pi*x).*sin(x+0.05*sin(6*pi*x)));
         f2=(1+g)*(x+0.05*sin(6*pi*x)).*(x+0.05*sin(6*pi*x));
         [h]=get_PF({f1,f2}, false);
