@@ -64,20 +64,19 @@ switch (probID)
         k=floor(5*abs(sin(pi*t)));
         y=x(2:end)-G;
         g=sum((4*y.^2-cos(2*k*pi*y)+1));
-        f(1)=(1+g)*(1-x(1)+0.05*sin(6*pi*x(1)))*(x(1)+0.05*sin(6*pi*x(1)).*sin(x(2:end)+0.05*sin(6*pi*x(2:end))));
-        f(2)=(1+g)*(x(1)+0.05*sin(6*pi*x(1))).*(x(2:end)+0.05*sin(6*pi*x(2:end)));
+        f(1)=(1+g)*(1-x(1)+0.05*sin(6*pi*x(1)));
+        f(2)=(1+g)*(x(1)+0.05*sin(6*pi*x(1)));
     case 'DP5'    
         k=10 * cos(2.5*pi*t);
         a=0.5*abs(sin(pi*t));
         g = sum(x(2:end)-0.5).^2 .* (1 + abs(cos(8*pi*x(1))));
-%         f(1)=(1+g)*(1-x(1)+0.05*sin(6*pi*x(1)))*(x1+0.05*sin(6*pi*x(1)).*sin(x(2:end)+0.05*sin(6*pi*x(2:end))));
-        f(1)=(1+g)*cos(0.5*pi*(x1))*cos(0.5*pi*(x1));
+        f(1)=(1+g)*cos(0.5*pi*(x(1)));
         if x(1)<a
-            f(2)=(1+g)*abs(k*cos(0.5*pi*x(1))-cos(0.5*pi*a))+sin*(0.5*pi*a);
+            f(2)=(1+g)*abs(k*cos(0.5*pi*x(1))-cos(0.5*pi*a))+sin(0.5*pi*a);
         else
             f(2)=(1+g)*sin(0.5*pi*x(1));
         end
-%         f(2)=(1+g)*(x(1)+0.05*sin(6*pi*x(1))).*(x(2:end)+0.05*sin(6*pi*x(2:end)));
+        
     %% inregular changes
     case 'DP6'
         G=sin(0.5*pi*t);
@@ -105,14 +104,14 @@ switch (probID)
         G=sin(0.5*pi*t);
         W=10^(1+abs(G));
         g=sum((x(2:end)-G).^2,2);
-        f(1)=(1+g)*(x1+0.05*sin(W*pi*x1));
-        f(2)=(1+g)*(1-x1+0.05*sin(W*pi*x1));
+        f(1)=(1+g)*(x(1)+0.05*sin(W*pi*x(1)));
+        f(2)=(1+g)*(1-x(1)+0.05*sin(W*pi*x(1)));
     case 'DP10'
         G=abs(sin(0.5*pi*t));
         p=floor(6*G);
         g=sum(x(2:end)-1/pi*abs(atan(cot(3*pi*t^2))).^2);
         f(1)=(1+g)*(cos(0.5*pi*x(1)))^2 + G;
-        f(2)=sum((sin(0.5*pi*x(2:end))).^2 +sin(0.5*pi*x(2:end)).*(cos(p*pi*x(2:end))).^2)+ G;
+        f(2)=(sin(0.5*pi*x(1))).^2 +sin(0.5*pi*x(1)).*(cos(p*pi*x(1))).^2+ G;
 
     otherwise
         disp('no such test problem.')
