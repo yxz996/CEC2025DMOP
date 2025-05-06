@@ -46,36 +46,35 @@ switch (probID)
         f(1)=g*(x(1)+0.1*sin(3*pi*x(1))).^a;
         f(2)=g*(1-x(1)+0.1*sin(3*pi*x(1))).^a;
     case 'DP2'
+        p=floor(5*abs(sin(pi*t)));
+        y=x(2:end)-cos(t);
+        g=sum((4*y.^2-cos(2*p*pi*y)+1));
+        f(1)=(1+g)*(1-x(1)+0.05.*sin(6*pi*x(1)));
+        f(2)=(1+g)*(x(1)+0.05.*sin(6*pi*x(1)));
+    case 'DP3'
+        k=10*cos(2.5*pi*t);
+        a=0.5*abs(sin(pi*t));
+        g=sum((x(2:end)-0.5).^2*(1+abs(cos(8*pi*x(2:end)))));
+        f(1)=(1+g)*cos(0.5*pi*x(1));
+        if x1<=a
+            f(2)=(1+g)*abs(k*(cos(0.5*pi*x(1))-cos(0.5*pi*a))+sin(0.5*pi*a));
+        else
+            f(2)=(1+g)*sin(0.5*pi*x(1));
+        end  
+    case 'DP4'
         G=sin(0.5*pi*t);
         k=2*floor(10*abs(G));
         y=x(2:end)-G;
         g=sum((4*y.^2-cos(k*pi*y)+1));
         f(1)=(1+g)*(x(1)+0.1*sin(3*pi*x(1)));
         f(2)=(1+g)*(1-x(1)+0.1*sin(3*pi*x(1)));
-    case 'DP3'
+    case 'DP5'    
         G=sin(0.5*pi*t);
         a=0.2+2.8*abs(G);
         y=x(2:end)-G;
-        g=sum((y.^2-10*cos(2*pi*y)+10));
-        f(1)=(1+g)*(x(1)+0.1*sin(3*pi*x(1))).^a;
-        f(2)=(1+g)*(1-x(1)+0.1*sin(3*pi*x(1))).^a;
-    case 'DP4'
-        G=cos(t);
-        k=floor(5*abs(sin(pi*t)));
-        y=x(2:end)-G;
-        g=sum((4*y.^2-cos(2*k*pi*y)+1));
-        f(1)=(1+g)*(1-x(1)+0.05*sin(6*pi*x(1)));
-        f(2)=(1+g)*(x(1)+0.05*sin(6*pi*x(1)));
-    case 'DP5'    
-        k=10 * cos(2.5*pi*t);
-        a=0.5*abs(sin(pi*t));
-        g = sum(x(2:end)-0.5).^2 .* (1 + abs(cos(8*pi*x(1))));
-        f(1)=(1+g)*cos(0.5*pi*(x(1)));
-        if x(1)<a
-            f(2)=(1+g)*abs(k*cos(0.5*pi*x(1))-cos(0.5*pi*a))+sin(0.5*pi*a);
-        else
-            f(2)=(1+g)*sin(0.5*pi*x(1));
-        end
+        g = sum(y.^2-10*cos(2*pi*y)+10);
+        f(1)=(1+g)*(x(1)+0.1*sin(3*pi*x(1)))^a;
+        f(2)=(1+g)*(1-x(1)+0.1*sin(3*pi*x(1)))^a;
         
     %% inregular changes
     case 'DP6'
@@ -103,7 +102,7 @@ switch (probID)
     case 'DP9'
         G=sin(0.5*pi*t);
         W=10^(1+abs(G));
-        g=sum((x(2:end)-G).^2,2);
+        g=sum((x(2:end)-G).^2);
         f(1)=(1+g)*(x(1)+0.05*sin(W*pi*x(1)));
         f(2)=(1+g)*(1-x(1)+0.05*sin(W*pi*x(1)));
     case 'DP10'

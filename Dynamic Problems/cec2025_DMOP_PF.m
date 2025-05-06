@@ -14,7 +14,7 @@
 %                                                         |
 % ========================================================|%
 
-function h=cec2015_DMOP_PF(probID,tau, taut, nt)
+function h=cec2025_DMOP_PF(probID,tau, taut, nt)
 % INPUT:
 %       probID: test problem identifier (i.e. 'DF1')
 %       tau:    current generation counter
@@ -48,16 +48,16 @@ switch (probID)
     case 'DP2'
         x=linspace(0,1,1500);       
         g=0;
-        f1=(1+g)*(1-x+0.05*sin(6*pi*x))*(x+0.05*sin(6*pi*x).*sin(x+0.05*sin(6*pi*x)));
-        f2=(1+g)*(x+0.05*sin(6*pi*x)).*(x+0.05*sin(6*pi*x));
+        f1=(1+g)*(1-x+0.05.*sin(6*pi*x));
+        f2=(1+g)*(x+0.05.*sin(6*pi*x));
         [h]=get_PF({f1,f2}, false);
     case 'DP3'
         x=linspace(0,1,1500);
-        k=10 * cos(2.5*pi*t);
+        k=10*cos(2.5*pi*t);
         a=0.5*abs(sin(pi*t));
         g=0;
-        f1=(1+g)*cos(0.5*pi*(x))*cos(0.5*pi*(x));
-        if x<a
+        f1=(1+g)*cos(0.5*pi*(x));
+        if x<=a
             f2=(1+g)*abs(k*cos(0.5*pi*x)-cos(0.5*pi*a))+sin*(0.5*pi*a);
         else
             f2=(1+g)*sin(0.5*pi*x);
@@ -66,20 +66,16 @@ switch (probID)
     case 'DP4'
         x=linspace(0,1,1500);
         g=0;
-        f1=(1+g)*(1-x+0.05*sin(6*pi*x));
-        f2=(1+g)*(x+0.05*sin(6*pi*x));
+        f1=(1+g)*(x+0.1*sin(3*pi*x));
+        f2=(1+g)*(1-x+0.1*sin(3*pi*x));
         [h]=get_PF({f1,f2}, false);
     case 'DP5'
         x=linspace(0,1,1500); 
-        k=10*cos(2.5*pi*t);
-        a=0.5*abs(sin(pi*t));
+        G=sin(0.5*pi*t);
+        a=0.2+2.8*abs(G);
         g=0;
-        f1=(1+g)*cos(0.5*pi*(x));
-        if x<a
-            f2=(1+g)*abs(k*cos(0.5*pi*x)-cos(0.5*pi*a))+sin(0.5*pi*a);
-        else
-            f2=(1+g)*sin(0.5*pi*x);
-        end
+        f1=(1+g)*(x+0.1*sin(3*pi*x))^a;
+        f2=(1+g)*(1-x+0.1*sin(3*pi*x))^a;
         [h]=get_PF({f1,f2}, false);
     %% inregular changes        
     case 'DP6'
