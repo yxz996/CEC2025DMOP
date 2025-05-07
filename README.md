@@ -40,8 +40,8 @@ More details can be found in "https://zoujuan1.github.io/#page-top"
 
 - Population Size:100
 - Number of variables: 10
-- Frequency of change (![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADqQAGa2OgAAOpDbZgAAZgA6ZgBmZjpmZrb/kDoAkGY6kNv/tmY6ttv/tv//25A625Bm25CQ25C22////7Zm/9uQ//+2///buxDsAgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoB2Q4mUEAhaIBcJ8khx8CLvEmcUQHCGoGpCIFA83iJLkEgSR7NwiAgwSrGBTpHiYQFJCbEgu5kcyUpJTUBRuqCREMVEAAAmlApVBkHxQAAAAAElFTkSuQmCC)): 10 (fast changing environments), 20 (slow changing environments).
-- Severity of change (![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAMAAACK2/weAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6ADpmADqQAGa2OgAAOgBmOpDbZgAAZgA6ZgBmZjpmZmZmZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmttvbtv//25A625C227Zm2////7Zm/9uQ//+2///b8pwAhQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAZ0lEQVQoU72QOxKAIAwFA4rGvyAKoob731J0hBk7K1NlX7FvEoC/xkuuXJGZp29eZDdQNcZ6qhCoVhGP0sCebxFtWK0IRO0lmBC8RKeOgjEBt0XzHsDi6xqddFdMjVmTMKDkqfzbD04+/gSBNNBHXwAAAABJRU5ErkJggg==)): 5 (severe changing environments), 10 (moderate changing environments).
+- Frequency of change $\tau_t$: 10 (fast changing environments), 20 (slow changing environments).
+- Severity of change $n_t$: 5 (severe changing environments), 10 (moderate changing environments).
 - Number of changes: 30.
 - Number of independent runs: 20
 - Stopping criterion: a maximum number of 100(30![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADqQAGa2OgAAOpDbZgAAZgA6ZgBmZjpmZrb/kDoAkGY6kNv/tmY6ttv/tv//25A625Bm25CQ25C22////7Zm/9uQ//+2///buxDsAgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoB2Q4mUEAhaIBcJ8khx8CLvEmcUQHCGoGpCIFA83iJLkEgSR7NwiAgwSrGBTpHiYQFJCbEgu5kcyUpJTUBRuqCREMVEAAAmlApVBkHxQAAAAAElFTkSuQmCC)+50) fitness evaluations, where 500 fitness evaluations are given before the first environmental change occurs.
