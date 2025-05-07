@@ -44,7 +44,7 @@ More details can be found in "https://zoujuan1.github.io/#page-top"
 - Severity of change $n_t$: 5 (severe changing environments), 10 (moderate changing environments).
 - Number of changes: 30.
 - Number of independent runs: 20
-- Stopping criterion: a maximum number of 100(30![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADqQAGa2OgAAOpDbZgAAZgA6ZgBmZjpmZrb/kDoAkGY6kNv/tmY6ttv/tv//25A625Bm25CQ25C22////7Zm/9uQ//+2///buxDsAgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoB2Q4mUEAhaIBcJ8khx8CLvEmcUQHCGoGpCIFA83iJLkEgSR7NwiAgwSrGBTpHiYQFJCbEgu5kcyUpJTUBRuqCREMVEAAAmlApVBkHxQAAAAAElFTkSuQmCC)+50) fitness evaluations, where 500 fitness evaluations are given before the first environmental change occurs.
+- Stopping criterion: a maximum number of 100(30$\tau_t$+50) fitness evaluations, where 500 fitness evaluations are given before the first environmental change occurs.
 - Metrics: MIGD、MHV[1-2]
 
 # Result Submission
