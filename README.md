@@ -6,3 +6,60 @@ All the benchmark functions have been implemented in MATLAB code, your competiti
 Please send your results directly to Dr Xiaozhong Yu (xzyu@ smail.xtu.edu.cn)  
 
 More details can be found in "https://zoujuan1.github.io/#page-top"
+
+
+
+# Search space
+
+| Problems | $x_i=1$ | $x_i=2,..n$ |
+| -------- | ------- | ----------- |
+| DP1      | [0,1]   | [-1,1]      |
+| DP2      | [0,1]   | [-1,1]      |
+| DP3      | [0,1]   | [0,1]       |
+| DP4      | [0,1]   | [-1,1]      |
+| DP5      | [0,1]   | [-1,1]      |
+| DP6      | [0,1]   | [-1,1]      |
+| DP7      | [0,1]   | [-1,1]      |
+| DP8      | [0,1]   | [-1,1]      |
+| DP9      | [0,1]   | [-1,1]      |
+| DP10     | [0,1]   | [0,1]       |
+| DC1      | [0,1]   | [-1,1]      |
+| DC2      | [0,1]   | [-1,1]      |
+| DC3      | [0,1]   | [-1,1]      |
+| DC4      | [0,1]   | [-1,1]      |
+| DC5      | [0,1]   | [0,1]       |
+| DC6      | [0,1]   | [-1,1]      |
+| DC7      | [0,1]   | [0,1]       |
+| DC8      | [0,1]   | [-1,1]      |
+| DC9      | [0,1]   | [-1,1]      |
+| DC10     | [0,1]   | [-1,1]      |
+
+
+
+# Parameter Setting
+
+- Population Size:100
+- Number of variables: 10
+- Frequency of change (![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADqQAGa2OgAAOpDbZgAAZgA6ZgBmZjpmZrb/kDoAkGY6kNv/tmY6ttv/tv//25A625Bm25CQ25C22////7Zm/9uQ//+2///buxDsAgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoB2Q4mUEAhaIBcJ8khx8CLvEmcUQHCGoGpCIFA83iJLkEgSR7NwiAgwSrGBTpHiYQFJCbEgu5kcyUpJTUBRuqCREMVEAAAmlApVBkHxQAAAAAElFTkSuQmCC)): 10 (fast changing environments), 20 (slow changing environments).
+- Severity of change (![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAMAAACK2/weAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6ADpmADqQAGa2OgAAOgBmOpDbZgAAZgA6ZgBmZjpmZmZmZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmttvbtv//25A625C227Zm2////7Zm/9uQ//+2///b8pwAhQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAZ0lEQVQoU72QOxKAIAwFA4rGvyAKoob731J0hBk7K1NlX7FvEoC/xkuuXJGZp29eZDdQNcZ6qhCoVhGP0sCebxFtWK0IRO0lmBC8RKeOgjEBt0XzHsDi6xqddFdMjVmTMKDkqfzbD04+/gSBNNBHXwAAAABJRU5ErkJggg==)): 5 (severe changing environments), 10 (moderate changing environments).
+- Number of changes: 30.
+- Number of independent runs: 20
+- Stopping criterion: a maximum number of 100(30![img](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADqQAGa2OgAAOpDbZgAAZgA6ZgBmZjpmZrb/kDoAkGY6kNv/tmY6ttv/tv//25A625Bm25CQ25C22////7Zm/9uQ//+2///buxDsAgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoB2Q4mUEAhaIBcJ8khx8CLvEmcUQHCGoGpCIFA83iJLkEgSR7NwiAgwSrGBTpHiYQFJCbEgu5kcyUpJTUBRuqCREMVEAAAmlApVBkHxQAAAAAElFTkSuQmCC)+50) fitness evaluations, where 500 fitness evaluations are given before the first environmental change occurs.
+- Metrics: MIGD、MHV[1-2]
+
+# Result Submission
+
+It is expected that competition results can be submitted in tables in a format exemplified in Table 1. However, other ways of result presentation are also acceptable. Please do make sure your result is of high readability for submission, and multiple types of results shown in Table are clearly recorded, including the mean and standard deviation of the MIGD/MHV values of each test instance.
+
+| Problem | $(\tau_t,n_t)$                        | MIGD(mean(std.))   | MHV(mean(std.))    |
+| ------- | ------------------------------------- | ------------------ | ------------------ |
+| DP1     | 10,5 <br> 10,10 <br> 20,5  <br> 20,10 | 1.234E-2(1.234E-3) | 1.234E-2(1.234E-3) |
+| DP2     |                                       |                    |                    |
+| ……      |                                       |                    |                    |
+| DP10    | 10,5 <br> 10,10 <br> 20,5 <br> 20,10  |                    |                    |
+
+# Reference
+
+[1]Hu Y, Zou J, Zheng J, et al. A new framework of change response for dynamic multi-objective optimization[J]. Expert Systems with Applications, 2024, 248: 123344.
+
+[2]Jiang S, Zou J, Yang S, et al. Evolutionary dynamic multi-objective optimisation: A survey[J]. ACM Computing Surveys, 2022, 55(4): 1-47.
