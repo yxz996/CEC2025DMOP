@@ -52,15 +52,15 @@ switch (probID)
         f(1)=(1+g)*(1-x(1)+0.05.*sin(6*pi*x(1)));
         f(2)=(1+g)*(x(1)+0.05.*sin(6*pi*x(1)));
     case 'DP3'
-        k=10*cos(2.5*pi*t);
-        a=0.5*abs(sin(pi*t));
-        g=sum((x(2:end)-0.5).^2*(1+abs(cos(8*pi*x(2:end)))));
-        f(1)=(1+g)*cos(0.5*pi*x(1));
-        if x1<=a
-            f(2)=(1+g)*abs(k*(cos(0.5*pi*x(1))-cos(0.5*pi*a))+sin(0.5*pi*a));
-        else
-            f(2)=(1+g)*sin(0.5*pi*x(1));
-        end  
+        k = 10 * cos(2.5 * pi * t);
+        a = 0.5 * abs(sin(pi * t));
+        g = sum((x(2:end) - 0.5).^2 .* (1 + abs(cos(8 * pi * x(2:end)))));
+        f(1) = (1 + g) * cos(0.5 * pi * x(1));
+        % 平滑因子（sigmoid）
+        s = 1 ./ (1 + exp(-100 * (a - x(1)))); 
+        term1 = abs(k * (cos(0.5 * pi * x(1)) - cos(0.5 * pi * a)) + sin(0.5 * pi * a));
+        term2 = sin(0.5 * pi * x(1));   
+        f(2) = (1 + g) * (s * term1 + (1 - s) * term2);
     case 'DP4'
         G=sin(0.5*pi*t);
         k=2*floor(10*abs(G));
@@ -107,10 +107,14 @@ switch (probID)
         f(2)=(1+g)*(1-x(1)+0.05*sin(W*pi*x(1)));
     case 'DP10'
         G=abs(sin(0.5*pi*t));
-        p=floor(6*G);
-        g=sum(x(2:end)-1/pi*abs(atan(cot(3*pi*t^2))).^2);
-        f(1)=(1+g)*(cos(0.5*pi*x(1)))^2 + G;
-        f(2)=(sin(0.5*pi*x(1))).^2 +sin(0.5*pi*x(1)).*(cos(p*pi*x(1))).^2+ G;
+ 		p = max(floor(6 * G), 1);  % 确保 p 至少为1，避免退化
+
+		% 防止 cot() 奇异点
+		safe_term = atan(1 ./ tan(3 * pi * t^2 + eps));  % 加 eps 防止 tan 为 0
+
+		g = sum((x(2:end) - 1/pi * abs(safe_term)).^2);
+		f(1) = (1 + g) * (cos(0.5 * pi * x(1)))^2 + G;
+		f(2) = (sin(0.5 * pi * x(1)))^2 + sin(0.5 * pi * x(1)) * (cos(p * pi * x(1)))^2 + G;
 
     otherwise
         disp('no such test problem.')
