@@ -57,11 +57,10 @@ switch (probID)
         a=0.5*abs(sin(pi*t));
         g=0;
         f1=(1+g)*cos(0.5*pi*(x));
-        if x<=a
-            f2=(1+g)*abs(k*cos(0.5*pi*x)-cos(0.5*pi*a))+sin*(0.5*pi*a);
-        else
-            f2=(1+g)*sin(0.5*pi*x);
-        end
+        s = 1 ./ (1 + exp(-100 * (a - x)));
+		term1 = abs(k * (cos(0.5 * pi * x) - cos(0.5 * pi * a)) + sin(0.5 * pi * a));
+		term2 = sin(0.5 * pi * x);
+		f2 = (1 + g) * (s * term1 + (1 - s) * term2);   
         [h]=get_PF({f1,f2}, false);
     case 'DP4'
         x=linspace(0,1,1500);
@@ -108,7 +107,7 @@ switch (probID)
     case 'DP10'
         x=linspace(0,1,1500);
         G=abs(sin(0.5*pi*t));
-        p=floor(6*G);
+        p=max(floor(6*G),1);
         g=0;
         f1=(1+g)*(cos(0.5*pi*x))^2 + G;
         f2=(sin(0.5*pi*x)).^2 +sin(0.5*pi*x).*(cos(p*pi*x)).^2+ G;
